@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>init with DOM - Test page</title>
+	</head>
+	<body>
+		<div data-js="time"></div>
+		<div data-js="creator"></div>
+		<script>
+			function time () {
+				var self = this;
+				var seconds;
+
+				setInterval(function () {
+					var dt = new Date();
+
+					if (seconds !== dt.getSeconds()) {
+						self.innerText = dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds();
+					}
+					seconds = dt.getSeconds();
+				}, 100)
+			}
+
+			function creator () {
+				var self = this;
+				var block1 = document.createElement('div');
+				block1.setAttribute('data-js', 'time');
+				self.appendChild(block1);
+			}
+		</script>
+		<script src="../build/initwithdom.min.js"></script>
+	</body>
+</html>

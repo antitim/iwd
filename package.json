@@ -1,0 +1,27 @@
+{
+  "name": "init-with-dom",
+  "version": "1.0.0",
+  "description": "init-with-dom",
+  "homepage": "",
+  "author": {
+    "name": "antitim",
+    "email": "antitim@yandex.ru",
+    "url": ""
+  },
+  "main": "index.js",
+  "keywords": [],
+  "repository": "antitim/init-with-dom",
+  "scripts": {
+    "build": "uglifyjs src/*.js -o build/initwithdom.min.js --comments all",
+    "lint": "eslint src/*.js"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "uglify-js": "^3.0.18"
+  }
+}
