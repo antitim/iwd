@@ -30,7 +30,7 @@ If the browser does not support MutationObserver or DOMNodeInserted, when you ch
 ```
 ## Demo
 
-[Demo](https://antitim.github.io/init-with-dom/test/)
+[Demo](https://antitim.github.io/init-with-dom/test/index.html)
 
 ## License
 
