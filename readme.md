@@ -3,9 +3,7 @@
 
 This script performs the function with the name specified in the attribute of the dom element in the context of this item.
 
-Supported the start of the function even if the DOM Element has been added after initialization of the script (MutationObserver, DOMNodeInserted).
-
-If the browser does not support MutationObserver or DOMNodeInserted, when you change the DOM tree, you can do trigger the DOMNodeInserted event on the body.
+Supported the start of the function even if the DOM Element has been added after initialization of the script (MutationObserver).
 
 ## Usage
 

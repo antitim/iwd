@@ -1,6 +1,6 @@
 {
   "name": "init-with-dom",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "init-with-dom",
   "homepage": "",
   "author": {
@@ -8,7 +8,7 @@
     "email": "antitim@yandex.ru",
     "url": ""
   },
-  "main": "index.js",
+  "main": "build/initwithdom.min.js",
   "keywords": [],
   "repository": "antitim/init-with-dom",
   "scripts": {
