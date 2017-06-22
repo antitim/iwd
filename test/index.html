@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div data-js="time"></div>
-		<div data-js="creator"></div>
+		<div data-js="creator" data-message="Hello!"></div>
 		<script>
 			function time () {
 				var self = this;
@@ -22,11 +22,19 @@
 				}, 100)
 			}
 
-			function creator () {
+			function creator (params) {
 				var self = this;
+
 				var block1 = document.createElement('div');
 				block1.setAttribute('data-js', 'time');
+
+				var block2 = document.createElement('div');
+				block2.innerText = params.data.message;
+
+				console.log(params)
+
 				self.appendChild(block1);
+				self.appendChild(block2);
 			}
 		</script>
 		<script src="../build/initwithdom.min.js"></script>

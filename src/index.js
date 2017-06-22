@@ -1,10 +1,37 @@
 /**
  * init with DOM
- * @version 1.0.0
+ * @version 1.0.4
  * @author Maximilian Timofeev <antitim@yandex.ru>
  */
 'use strict';
 (function () {
+  var camelCase = function (name) {
+    return name.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+  };
+
+  var getAttr = function (element) {
+    var attr = {
+      data: {}
+    };
+    var attributes = element.attributes;
+
+    for (var i = 0; i < attributes.length; ++i) {
+      var key = attributes[i].name;
+      var value = attributes[i].textContent;
+
+      if (key.slice(0, 4) === 'data') {
+        key = key.slice(5);
+        key = camelCase(key);
+        attr.data[key] = value;
+      } else {
+        key = camelCase(key);
+        attr[key] = value;
+      }
+    }
+
+    return attr;
+  };
+
   var js = function (target) {
     var elements = target.querySelectorAll('[data-js]');
 
@@ -17,7 +44,7 @@
         var name = item.getAttribute('data-js');
 
         if (typeof window[name] === 'function') {
-          window[name].call(item);
+          window[name].call(item, getAttr(item));
           classes.add('js_inited');
         }
       }

@@ -8,11 +8,13 @@ Supported the start of the function even if the DOM Element has been added after
 ## Usage
 
 ```html
-<div data-js="time"></div>
+<div data-js="time" data-name="Hi" id="megaId"></div>
 <script>
-  function time () {
+  function time (params) {
     var self = this; // DOM Element <div data-js="time"></div>
     var seconds;
+
+    params; // { data: { name: "Hi" }, class: "js", id: "megaId" }
 
     setInterval(function () {
       var dt = new Date();
