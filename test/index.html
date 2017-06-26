@@ -4,10 +4,11 @@
 		<meta charset="utf8">
 		<title>init with DOM - Test page</title>
 	</head>
-	<body>
+	<body data-js="page">
 		<div data-js="time"></div>
 		<div data-js="creator" data-message="Hello!"></div>
 		<script>
+			function page () {}
 			function time () {
 				var self = this;
 				var seconds;

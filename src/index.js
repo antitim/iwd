@@ -1,6 +1,6 @@
 /**
- * init with DOM
- * @version 1.0.4
+ * init with DOM. https://github.com/antitim/init-with-dom
+ * @version 1.0.5
  * @author Maximilian Timofeev <antitim@yandex.ru>
  */
 'use strict';
@@ -33,6 +33,10 @@
   };
 
   var js = function (target) {
+    if (target.parentElement) {
+      target = target.parentElement;
+    }
+
     var elements = target.querySelectorAll('[data-js]');
 
     for (var i = 0; i < elements.length; ++i) {
