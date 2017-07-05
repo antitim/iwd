@@ -6,9 +6,15 @@
 	</head>
 	<body data-js="page">
 		<div data-js="time"></div>
-		<div data-js="creator" data-message="Hello!"></div>
+		<div data-js="creator" data-message="Added after init:"></div>
 		<script>
-			function page () {}
+			function page () {
+				var self = this;
+				var element = document.createElement('span');
+				element.innerText = 'js on body'
+				self.appendChild(element);
+				self.setAttribute('data-gg', 'fdsfs');
+			}
 			function time () {
 				var self = this;
 				var seconds;
@@ -32,12 +38,10 @@
 				var block2 = document.createElement('div');
 				block2.innerText = params.data.message;
 
-				console.log(params)
-
-				self.appendChild(block1);
 				self.appendChild(block2);
+				self.appendChild(block1);
 			}
 		</script>
-		<script src="../build/initwithdom.min.js"></script>
+		<script src="../build/iwd.min.js"></script>
 	</body>
 </html>

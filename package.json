@@ -1,6 +1,6 @@
 {
   "name": "init-with-dom",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "init-with-dom",
   "homepage": "",
   "author": {
@@ -10,9 +10,9 @@
   },
   "main": "build/initwithdom.min.js",
   "keywords": [],
-  "repository": "antitim/init-with-dom",
+  "repository": "antitim/iwd",
   "scripts": {
-    "build": "uglifyjs src/*.js -o build/initwithdom.min.js --comments all",
+    "build": "uglifyjs src/*.js -o build/iwd.min.js --comments all",
     "lint": "eslint src/*.js"
   },
   "license": "MIT",

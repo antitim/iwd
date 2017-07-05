@@ -1,6 +1,6 @@
 /**
- * init with DOM. https://github.com/antitim/init-with-dom
- * @version 1.0.5
+ * IWD. https://github.com/antitim/init-with-dom
+ * @version 1.1.0
  * @author Maximilian Timofeev <antitim@yandex.ru>
  */
 'use strict';
@@ -33,11 +33,7 @@
   };
 
   var js = function (target) {
-    if (target.parentElement) {
-      target = target.parentElement;
-    }
-
-    var elements = target.querySelectorAll('[data-js]');
+    var elements = target.querySelectorAll ? target.querySelectorAll('[data-js]') : [];
 
     for (var i = 0; i < elements.length; ++i) {
       var item = elements[i];
@@ -55,24 +51,27 @@
     };
   };
 
-  var Observer;
-
-  if (typeof MutationObserver !== 'undefined') {
-    Observer = MutationObserver;
-  } else if (typeof WebKitMutationObserver !== 'undefined') {
-    Observer = WebKitMutationObserver;
-  }
+  var Observer = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
   if (Observer) {
     var observer = new Observer(function (mutations) {
       mutations.forEach(function (mutation) {
-        js(mutation.target);
+        if (mutation.type === 'childList') {
+          js(mutation.target);
+        }
       });
     });
 
     observer.observe(document.body, {
       childList: true,
+      attributes: true,
       subtree: true
     });
+  } else {
+    document.addEventListener('DOMSubtreeModified', function (e) {
+      js(e.target);
+    });
   }
+
+  js(document);
 })();

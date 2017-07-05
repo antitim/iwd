@@ -1,9 +1,20 @@
-# init-with-dom [![NPM version][npm-image]][npm-url]
+# IWD (init with DOM) [![NPM version][npm-image]][npm-url]
 ## About
 
 This script performs the function with the name specified in the attribute of the dom element in the context of this item.
 
 Supported the start of the function even if the DOM Element has been added after initialization of the script (MutationObserver).
+
+## Browser
+- IE 10+
+- Edge
+- Firefox 14+
+- Chrome 18+
+- Safary 6+
+- Opera 15+
+- iOS Safari 6.1+
+- Android Browser 4.4 +
+
 
 ## Usage
 
@@ -26,11 +37,11 @@ Supported the start of the function even if the DOM Element has been added after
     }, 100)
   }
 </script>
-<script src="../build/initwithdom.min.js"></script>
+<script src="../build/iwd.min.js"></script>
 ```
 ## Demo
 
-[Demo](https://antitim.github.io/init-with-dom/test/index.html)
+[Demo](https://antitim.github.io/iwd/test/index.html)
 
 ## License
 
