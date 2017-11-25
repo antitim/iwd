@@ -6,8 +6,22 @@
 	</head>
 	<body data-js="page">
 		<div data-js="time"></div>
+		<div data-js="b" data-text="Hello"></div>
 		<div data-js="creator" data-message="Added after init:"></div>
 		<script>
+			function b (params) {
+				var self = this;
+				var render = function () {
+					self.innerHTML = '<b>' + self.getAttribute('data-text') + '</b>';
+				}
+
+				self.addEventListener('iwdUpdate', function (e) {
+					console.log(e.detail)
+					render();
+				})
+
+				render();
+			}
 			function page () {
 				var self = this;
 				var element = document.createElement('span');
@@ -28,7 +42,6 @@
 					seconds = dt.getSeconds();
 				}, 100)
 			}
-
 			function creator (params) {
 				var self = this;
 

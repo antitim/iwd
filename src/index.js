@@ -1,77 +1,63 @@
-/**
- * IWD. https://github.com/antitim/init-with-dom
- * @version 1.1.0
- * @author Maximilian Timofeev <antitim@yandex.ru>
- */
-'use strict';
-(function () {
-  var camelCase = function (name) {
-    return name.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
-  };
+import init from './init';
+import trigger from './trigger';
 
-  var getAttr = function (element) {
-    var attr = {
-      data: {}
-    };
-    var attributes = element.attributes;
+const Observer = window.MutationObserver ||
+  window.WebKitMutationObserver ||
+  window.MozMutationObserver;
 
-    for (var i = 0; i < attributes.length; ++i) {
-      var key = attributes[i].name;
-      var value = attributes[i].textContent;
+if (Observer) {
+  var observer = new Observer(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.type === 'childList') {
+        init(mutation.addedNodes);
+      }
 
-      if (key.slice(0, 4) === 'data') {
-        key = key.slice(5);
-        key = camelCase(key);
-        attr.data[key] = value;
+      if (mutation.type === 'attributes') {
+        trigger(
+          mutation.target,
+          'iwdUpdate',
+          {
+            attribute: mutation.attributeName
+          }
+        );
+      }
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    attributes: true,
+    subtree: true
+  });
+} else {
+  /**
+   * For IE 10
+   */
+  document.addEventListener(
+    'DOMNodeInserted',
+    e => {
+      if (e.target.constructor !== NodeList) {
+        init([e.target]);
       } else {
-        key = camelCase(key);
-        attr[key] = value;
+        init(e.target);
       }
-    }
+    },
+    false
+  );
 
-    return attr;
-  };
-
-  var js = function (target) {
-    var elements = target.querySelectorAll ? target.querySelectorAll('[data-js]') : [];
-
-    for (var i = 0; i < elements.length; ++i) {
-      var item = elements[i];
-      var classes = item.classList;
-      classes.add('js');
-
-      if (!classes.contains('js_inited')) {
-        var name = item.getAttribute('data-js');
-
-        if (typeof window[name] === 'function') {
-          window[name].call(item, getAttr(item));
-          classes.add('js_inited');
+  document.addEventListener(
+    'DOMAttrModified',
+    e => {
+      trigger(
+        e.target,
+        'iwdUpdate',
+        {
+          attribute: e.attrName
         }
-      }
-    };
-  };
+      );
+    },
+    false
+  );
+}
 
-  var Observer = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-
-  if (Observer) {
-    var observer = new Observer(function (mutations) {
-      mutations.forEach(function (mutation) {
-        if (mutation.type === 'childList') {
-          js(mutation.target);
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      attributes: true,
-      subtree: true
-    });
-  } else {
-    document.addEventListener('DOMSubtreeModified', function (e) {
-      js(e.target);
-    });
-  }
-
-  js(document);
-})();
+init(document.querySelectorAll('[data-js]'));
