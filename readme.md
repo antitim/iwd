@@ -39,9 +39,9 @@ Supported the start of the function even if the DOM Element has been added after
 </script>
 <script src="../build/iwd.min.js"></script>
 ```
-## Demo
+## Test
 
-[Demo](https://antitim.github.io/iwd/test/index.html)
+[Test](https://antitim.github.io/iwd/test/index.html)
 
 ## License
 

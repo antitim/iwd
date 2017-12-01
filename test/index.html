@@ -2,59 +2,67 @@
 <html>
 	<head>
 		<meta charset="utf8">
-		<title>init with DOM - Test page</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<title>IWD - Test page</title>
 	</head>
 	<body data-js="page">
-		<div data-js="time"></div>
-		<div data-js="b" data-text="Hello"></div>
-		<div data-js="creator" data-message="Added after init:"></div>
-		<script>
-			function b (params) {
-				var self = this;
-				var render = function () {
-					self.innerHTML = '<b>' + self.getAttribute('data-text') + '</b>';
-				}
-
-				self.addEventListener('iwdUpdate', function (e) {
-					console.log(e.detail)
-					render();
-				})
-
-				render();
-			}
-			function page () {
-				var self = this;
-				var element = document.createElement('span');
-				element.innerText = 'js on body'
-				self.appendChild(element);
-				self.setAttribute('data-gg', 'fdsfs');
-			}
-			function time () {
-				var self = this;
-				var seconds;
-
-				setInterval(function () {
-					var dt = new Date();
-
-					if (seconds !== dt.getSeconds()) {
-						self.innerText = dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds();
-					}
-					seconds = dt.getSeconds();
-				}, 100)
-			}
-			function creator (params) {
-				var self = this;
-
-				var block1 = document.createElement('div');
-				block1.setAttribute('data-js', 'time');
-
-				var block2 = document.createElement('div');
-				block2.innerText = params.data.message;
-
-				self.appendChild(block2);
-				self.appendChild(block1);
-			}
-		</script>
+		<div class="container">
+			<h1>IWD. Test page</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Case</th>
+						<th scope="col">Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Simple case</td>
+						<td>
+							<span data-js="signal"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Attribute read</td>
+						<td>
+							<span data-js="attribute" data-key="value" data-camel-case="hi"></span>
+						</td>
+					</tr>
+					<tr>
+						<td><code>data-js</code> on body</td>
+						<td>
+							<span class="js-on-body"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Creating with DOM api</td>
+						<td>
+							<span data-js="creator"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Creating with innerHTML</td>
+						<td>
+							<span data-js="creatorInnerHtml"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Creating with innerHTML. Nested</td>
+						<td>
+							<span data-js="creatorInnerHtmlNested"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Event <code>iwdUpdate</code></td>
+						<td>
+							<span data-js="listener"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div data-js="b" data-text="Hello"></div>
+		</div>
+		<script src="./app.js"></script>
 		<script src="../build/iwd.min.js"></script>
 	</body>
 </html>

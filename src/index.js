@@ -9,7 +9,13 @@ if (Observer) {
   var observer = new Observer(mutations => {
     mutations.forEach(mutation => {
       if (mutation.type === 'childList') {
-        init(mutation.addedNodes);
+        const nodes = mutation.addedNodes;
+        init(nodes);
+        for (let i = 0; i < nodes.length; i++) {
+          if (nodes[i].querySelectorAll) {
+            init(nodes[i].querySelectorAll('[data-js]'));
+          }
+        }
       }
 
       if (mutation.type === 'attributes') {
