@@ -40,6 +40,9 @@ Supported the start of the function even if the DOM Element has been added after
 <script src="../build/iwd.min.js"></script>
 ```
 ## Test
+[<img src="https://www.browserstack.com/images/mail/browserstack-logo-footer.png" width="120">](https://www.browserstack.com/)
+
+Thank you to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows to test in real browsers.
 
 [Test](https://antitim.github.io/iwd/test/index.html)
 
