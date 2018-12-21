@@ -5,7 +5,7 @@ import { terser } from 'rollup-plugin-terser';
 const plugins = [
   resolve(),
   babel(),
-  /* terser({
+  terser({
     compress: {
       pure_getters: true,
       unsafe: true,
@@ -14,7 +14,7 @@ const plugins = [
       drop_console: true,
       drop_debugger: true
     }
-  }) */
+  })
 ];
 
 export default [

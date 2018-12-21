@@ -13,7 +13,7 @@ iwd.add('attribute', function (params) {
     params.data.key === 'value' &&
     params.data.camelCase === 'hi'
   ) {
-    self.innerText = '✔';
+    self.innerHTML = '✔';
   }
 });
 
@@ -21,7 +21,7 @@ iwd.add('attribute', function (params) {
 iwd.add('page', function () {
   var self = this;
   var element = self.querySelector('.js-on-body');
-  element.innerText = '✔';
+  element.innerHTML = '✔';
 });
 
 // Creating with DOM api
