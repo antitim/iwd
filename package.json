@@ -8,26 +8,25 @@
     "email": "antitim@yandex.ru",
     "url": "https://github.com/antitim/iwd"
   },
-  "main": "lib/iwd.js",
-  "browser": "dist/iwd.js",
-  "module": "src/index.js",
+  "main": "dist/iwd.cjs.js",
+  "browser": "dist/iwd.umd.js",
+  "module": "dist/index.es.js",
   "keywords": [],
   "repository": "antitim/iwd",
   "scripts": {
-    "install": "rollup --config",
     "build": "rollup --config",
     "lint": "eslint src/*.js"
   },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.2.0",
+    "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
     "eslint-plugin-compat": "^2.6.3",
-    "rollup": "^0.67.4",
+    "rollup": "^0.68.1",
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^3.0.0"

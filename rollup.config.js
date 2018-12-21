@@ -21,19 +21,27 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: 'lib/iwd.js',
-      format: 'cjs'
+      file: 'dist/iwd.cjs.js',
+      format: 'cjs',
     },
-    plugins
+    plugins, 
   },
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/iwd.js',
+      file: 'dist/iwd.umd.js',
       format: 'umd',
       name: 'iwd',
-      //sourcemap: 'inline'
+      sourcemap: true,
     },
-    plugins
+    plugins, 
+  },
+  {
+    input: 'src/index.js',
+    output: {
+      file: 'dist/iwd.es.js',
+      format: 'es',
+    },
+    plugins, 
   }
 ];
