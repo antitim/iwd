@@ -10,7 +10,8 @@
   },
   "main": "dist/iwd.cjs.js",
   "browser": "dist/iwd.umd.js",
-  "module": "dist/index.es.js",
+  "module": "dist/iwd.es.js",
+  "types": "src/index.d.ts",
   "keywords": [],
   "repository": "antitim/iwd",
   "scripts": {

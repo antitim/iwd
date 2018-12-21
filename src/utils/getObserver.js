@@ -1,3 +1,5 @@
-export default () => window.MutationObserver ||
-window.WebKitMutationObserver ||
-window.MozMutationObserver;
+export default () => (
+  window.MutationObserver ||
+  window.WebKitMutationObserver ||
+  window.MozMutationObserver
+);

@@ -1,9 +1,78 @@
 # IWD (init with DOM) [![NPM version][npm-image]][npm-url]
 ## About
 
-This script performs the function with the name specified in the attribute of the dom element in the context of this item.
+This library starts the handler when the corresponding element appears in the DOM tree.
 
-Supported the start of the function even if the DOM Element has been added after initialization of the script (MutationObserver).
+You can add a handler first, and then an element in the DOM tree.
+
+You can also add an element first and then a handler.
+
+HTML:
+
+```html
+<div data-js="total">
+  <div data-js="widget" data-name="World 1"></div>
+  <div data-js="widget" data-name="World 2"></div>
+  <div data-js="widget" data-name="World 3"></div>
+</div>
+```
+
+JS:
+
+```js
+import iwd from 'init-with-dom';
+
+iwd.add('widget', function (attrs) {
+  this.innerText = `Hello ${attrs.data.name}`;
+
+  this.addEventListener('click', () => {}, false);
+});
+
+iwd.add('total', function (attrs) {
+  const worlds = this.querySelectorAll('[data-js]');
+
+  if (worlds) {
+    const el = document.createElement('div');
+    el.innerText = `Total: ${worlds.length}`;
+    this.append(el);
+  }
+});
+
+```
+
+Result:
+```html
+<div data-js="total">
+  <div data-js="widget" data-name="World 1">Hello World 1</div>
+  <div data-js="widget" data-name="World 2">Hello World 2</div>
+  <div data-js="widget" data-name="World 3">Hello World 3</div>
+  <div>Total: 3</div>
+</div>
+```
+
+## API
+
+### iwd.add(name, handler)
+Adding handler for Element with `data-js=name`
+
+`name` - name of the element (Value of `data-js` attribute)
+
+`handler` - handler function
+
+### iwd.replace(name, handler)
+Replace handler for Element with `data-js=name`
+
+`name` - name of the element (Value of `data-js` attribute)
+
+`handler` - handler function
+
+### iwd.remove(name)
+Remove handler for Element with `data-js=name`
+
+`name` - name of the element (Value of `data-js` attribute)
+
+### iwd.removeAll()
+Remove all handlers
 
 ## Browser
 - IE 10+
@@ -20,7 +89,7 @@ Supported the start of the function even if the DOM Element has been added after
 
 ```html
 <div data-js="time" data-name="Hi" id="megaId"></div>
-<script src="../build/iwd.min.js"></script>
+<script src="../dist/iwd.umd.js"></script>
 <script>
   iwd.add('time', function (params) {
     var self = this; // DOM Element <div data-js="time"></div>
