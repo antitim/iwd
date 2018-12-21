@@ -1,0 +1,10 @@
+ie >= 10
+edge >= 12
+firefox >= 14
+chrome >= 18
+safari >= 6
+opera >= 15
+iOS >= 6.1
+Android >= 4.4
+not OperaMini all
+not dead

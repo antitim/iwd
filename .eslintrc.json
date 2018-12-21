@@ -1,12 +1,19 @@
 {
-    "extends": "standard",
-    "rules": {
-        "semi": ["error", "always"]
-    },
-    "env": {
-        "browser": true
-    },
-    "globals": {
-        "WebKitMutationObserver": false
-    }
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "plugins": ["compat"],
+  "rules": {
+    "semi-spacing": ["error", {"before": false, "after": true}],
+    "compat/compat": "error",
+    "no-unused-vars": "off",
+    "no-console": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 9
+  }
 }

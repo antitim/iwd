@@ -10,7 +10,7 @@ Supported the start of the function even if the DOM Element has been added after
 - Edge
 - Firefox 14+
 - Chrome 18+
-- Safary 6+
+- Safari 6+
 - Opera 15+
 - iOS Safari 6.1+
 - Android Browser 4.4 +
@@ -20,8 +20,9 @@ Supported the start of the function even if the DOM Element has been added after
 
 ```html
 <div data-js="time" data-name="Hi" id="megaId"></div>
+<script src="../build/iwd.min.js"></script>
 <script>
-  function time (params) {
+  iwd.add('time', function (params) {
     var self = this; // DOM Element <div data-js="time"></div>
     var seconds;
 
@@ -35,9 +36,8 @@ Supported the start of the function even if the DOM Element has been added after
       }
       seconds = dt.getSeconds();
     }, 100)
-  }
+  });
 </script>
-<script src="../build/iwd.min.js"></script>
 ```
 ## Test
 [<img src="https://www.browserstack.com/images/mail/browserstack-logo-footer.png" width="120">](https://www.browserstack.com/)

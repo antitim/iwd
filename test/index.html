@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf8">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<title>IWD - Test page</title>
 	</head>
 	<body data-js="page">
@@ -58,11 +58,35 @@
 							<span data-js="listener"></span>
 						</td>
 					</tr>
+					<tr>
+						<td>Add handler</td>
+						<td>
+							<span data-js="add-handler"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Replace handler</td>
+						<td>
+							<span class="replace-handler"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Remove handler</td>
+						<td>
+							<span class="remove-handler"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Remove all handlers</td>
+						<td>
+							<span class="remove-all-handlers"></span>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 			<div data-js="b" data-text="Hello"></div>
 		</div>
+		<script src="../dist/iwd.js"></script>
 		<script src="./app.js"></script>
-		<script src="../build/iwd.min.js"></script>
 	</body>
 </html>
