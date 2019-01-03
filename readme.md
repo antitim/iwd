@@ -74,6 +74,41 @@ Remove handler for Element with `data-js=name`
 ### iwd.removeAll()
 Remove all handlers
 
+### iwd.middleware
+Array of middlewares
+
+## Middleware
+You can use middleware for global adding some props to argument for handler function or doing something with Element.
+
+### Example
+
+Doing something with attrs
+```js
+iwd.middleware.push(function (node, attrs) {
+  const store = {};
+
+  attrs.store = store;
+});
+
+iwd.add('some', function (attrs) {
+  attrs.store.a = 7;
+});
+
+iwd.add('some-2', function (attrs) {
+  console.log(attrs.store);
+});
+
+```
+
+Doing something with Element
+
+```js
+
+iwd.middleware.push(function (node, attrs) {
+  node.addEventListener(...);
+});
+```
+
 ## Browser
 - IE 10+
 - Edge

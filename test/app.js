@@ -1,5 +1,32 @@
 /* global iwd */
 
+// Adding middlewares
+iwd.middleware.push(function (node, params) {
+  params.store = { a: 5 };
+  
+  return params;
+});
+
+iwd.middleware.push(function (node, params) {
+  params.callback = function () {
+    return 3;
+  }
+
+  return params;
+});
+
+iwd.middleware.push(function (node, params) {
+  params.tagName = node.tagName;
+
+  return params;
+});
+
+iwd.middleware.push(function (node, params) {
+  node.classList.add('middleware');
+
+  return params;
+});
+
 // Simple case
 iwd.add('signal', function () {
   var self = this;
@@ -93,3 +120,16 @@ setTimeout(function () {
   iwd.removeAll();
   document.querySelector('.remove-all-handlers').innerHTML = '<div data-js="remove-all-signal">✔</div>';
 }, 2000);
+
+// middleware
+
+iwd.add('middleware', function (params) {
+  if (
+    params.store.a === 5 &&
+    params.callback() === 3 &&
+    params.tagName === 'SPAN' &&
+    this.classList.contains('middleware')
+  ) {
+    this.innerHTML = '✔';
+  }
+});

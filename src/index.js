@@ -7,4 +7,5 @@ export default {
   replace: iwd.replaceHandler,
   remove: iwd.removeHandler,
   removeAll: iwd.removeAllHandlers,
+  middleware: iwd.middleware,
 };

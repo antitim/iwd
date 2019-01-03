@@ -5,6 +5,7 @@ class NodesHandlers {
   constructor () {
     this.nodes = {};
     this.handlers = {};
+    this.middleware = [];
   }
 
   /**
@@ -30,7 +31,14 @@ class NodesHandlers {
   init = (node, handler) => {
     if (node.classList.contains('js_inited')) return;
 
-    handler.call(node, getAttr(node));
+    let params = getAttr(node);
+
+    for (let middleware of this.middleware) {
+      params = middleware(node, params);
+    }
+
+    handler.call(node, params);
+
     node.classList.add('js_inited');
   }
 
