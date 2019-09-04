@@ -6,8 +6,8 @@ export default element => {
   };
 
   for (let i = 0; i < element.attributes.length; i++) {
+    const value = element.attributes[i].textContent;
     let key = element.attributes[i].name;
-    let value = element.attributes[i].textContent;
 
     if (key.slice(0, 4) === 'data') {
       key = key.slice(5);

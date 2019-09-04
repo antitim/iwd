@@ -1,12 +1,24 @@
 {
-    "extends": "standard",
-    "rules": {
-        "semi": ["error", "always"]
-    },
-    "env": {
-        "browser": true
-    },
-    "globals": {
-        "WebKitMutationObserver": false
-    }
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "rules": {
+      "semi-spacing": ["error", {"before": false, "after": true}],
+      "no-unused-vars": "off",
+      "no-console": "off"
+  },
+  "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module"
+  },
+  "settings": {
+      "polyfills": [
+      "fetch", "promises"
+      ]
+  }
 }
+  

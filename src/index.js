@@ -23,7 +23,7 @@ if (Observer) {
           mutation.target,
           'iwdUpdate',
           {
-            attribute: mutation.attributeName
+            attribute: mutation.attributeName,
           }
         );
       }
@@ -33,7 +33,7 @@ if (Observer) {
   observer.observe(document.body, {
     childList: true,
     attributes: true,
-    subtree: true
+    subtree: true,
   });
 } else {
   /**
@@ -58,8 +58,8 @@ if (Observer) {
         e.target,
         'iwdUpdate',
         {
-          attribute: e.attrName
-        }
+          attribute: e.attrName,
+        },
       );
     },
     false

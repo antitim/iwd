@@ -17,5 +17,5 @@ export default nodes => {
         classes.add('js_inited');
       }
     }
-  };
+  }
 };

@@ -1,12 +1,11 @@
 {
   "name": "init-with-dom",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "init with dom",
-  "homepage": "",
+  "homepage": "https://github.com/antitim/iwd",
   "author": {
     "name": "antitim",
-    "email": "antitim@yandex.ru",
-    "url": ""
+    "email": "antitim@yandex.ru"
   },
   "main": "build/iwd.min.js",
   "keywords": [],
@@ -18,16 +17,13 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^3.9.1",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "rollup": "^0.51.8",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1"
   }
 }
